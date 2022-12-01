@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
 
 @include 'config.php';
 
@@ -16,20 +15,20 @@ if(isset($_POST['message'])){
 	$id = filter_var($id, FILTER_SANITIZE_STRING);
 	$user_id = $_POST['user_id'];
 	$user_id = filter_var($user_id, FILTER_SANITIZE_STRING);*/
-	/*$name = $_POST['name'];
+	$name = $_POST['name'];
 	$name = filter_var($name, FILTER_SANITIZE_STRING);
 	$email = $_POST['email'];
 	$email = filter_var($email, FILTER_SANITIZE_STRING);
-	$number = $_POST['number'];
-	$number = filter_var($number, FILTER_SANITIZE_STRING);
-	$message = $_POST['message'];
-	$message = filter_var($message, FILTER_SANITIZE_STRING);
+	/*$number = $_POST['number'];
+	$number = filter_var($number, FILTER_SANITIZE_STRING);*/
+	$send_message = $_POST['message'];
+	$send_message = filter_var($send_message, FILTER_SANITIZE_STRING);
  	
 
 	$insert_message = $conn->prepare("INSERT INTO `message` (id, user_id, name, email, number, message) VALUES (NULL,?,?,?,?,?)");
-	$insert_message->execute([$user_id, $name, $email, $number, $message]);*/
+	$insert_message->execute([$user_id, $name, $email, NULL, $send_message]);
 
- }
+ };
  
 
 ?>

@@ -20,6 +20,8 @@ if(isset($_POST['add_product'])){
    $category = filter_var($category, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
+   $qty = $_POST['qty'];
+   $qty = filter_var($qty, FILTER_SANITIZE_STRING);
 
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
@@ -34,8 +36,8 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, category, details, price, image) VALUES(?,?,?,?,?)");
-      $insert_products->execute([$name, $category, $details, $price, $image]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, category, details, price, qty, image) VALUES(?,?,?,?,?,?)");
+      $insert_products->execute([$name, $category, $details, $price, $qty, $image]);
 
       if($insert_products){
          if($image_size > 2000000){
@@ -107,10 +109,11 @@ if(isset($_GET['delete'])){
          </select>
          </div>
          <div class="inputBox">
+         <input type="number" min="0" name="qty" class="box" required placeholder="enter quantity of product">
          <input type="number" min="0" name="price" class="box" required placeholder="enter product price per pound">
-         <input type="file" name="image" required class="box" accept="image/jpg, image/jpeg, image/png">
          </div>
       </div>
+      <input type="file" name="image" required class="box" accept="image/jpg, image/jpeg, image/png">
       <textarea name="details" class="box" required placeholder="enter product details" cols="30" rows="10"></textarea>
       <input type="submit" class="btn" value="add product" name="add_product">
    </form>
@@ -133,6 +136,7 @@ if(isset($_GET['delete'])){
       <div class="price">$<?= $fetch_products['price']; ?>/lb</div>
       <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
+      <div class="name">Quantity:  <?= $fetch_products['qty']; ?></div>
       <div class="cat"><?= $fetch_products['category']; ?></div>
       <div class="details"><?= $fetch_products['details']; ?></div>
       <div class="flex-btn">

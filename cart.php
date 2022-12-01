@@ -83,6 +83,11 @@ if(isset($_POST['update_qty'])){
    <?php
       $grand_total += $sub_total;
       $total_weight += $fetch_cart['quantity'];
+      $shipping_charge = 0;
+      if($total_weight > 20) {
+         $shipping_charge = 5;
+         $grand_total += $shipping_charge;
+      }
       }
    }else{
       echo '<p class="empty">your cart is empty</p>';
@@ -91,6 +96,7 @@ if(isset($_POST['update_qty'])){
    </div>
 
    <div class="cart-total">
+      <p>Shipping Charge : <span>$<?= $shipping_charge; ?></span></p>
       <p>Total Cost : <span>$<?= $grand_total; ?></span></p>
       <p>Total Weight : <span><?= $total_weight; ?> lb</span></p>
       <a href="shop.php" class="option-btn">continue shopping</a>

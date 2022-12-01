@@ -133,7 +133,7 @@ if(isset($_POST['add_to_cart'])){
       <div class="box">
          <img src="images/cat-2.png" alt="">
          <h3>meat</h3>
-         <p>Locally sorced organic meat.</p>
+         <p>Locally sourced organic meat.</p>
          <a href="category.php?category=meat" class="btn">meat</a>
       </div>
 

@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
 
 if (isset($message)) {
    foreach ($message as $message) {

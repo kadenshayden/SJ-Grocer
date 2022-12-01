@@ -128,6 +128,7 @@ if(isset($_POST['add_to_cart'])){
 <div class="flex-btn">
   <input type="number" min="1" value="1" name="p_qty" class="qty"> 
     <div class="name">  <h3>lb</h3> </div>
+    <div class="name">Quantity:  <?= $fetch_products['qty']; ?></div>
     </div>
       <input type="submit" value="add to wishlist" class="option-btn" name="add_to_wishlist">
       <input type="submit" value="add to cart" class="btn" name="add_to_cart">
