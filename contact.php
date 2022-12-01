@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 
 @include 'config.php';
 
@@ -8,9 +9,28 @@ $user_id = $_SESSION['user_id'];
 
 if (!isset($user_id)) {
 	header('location:login.php');
-}
-;
+};
 
+if(isset($_POST['message'])){
+	/*$id = $_POST['id'];
+	$id = filter_var($id, FILTER_SANITIZE_STRING);
+	$user_id = $_POST['user_id'];
+	$user_id = filter_var($user_id, FILTER_SANITIZE_STRING);*/
+	/*$name = $_POST['name'];
+	$name = filter_var($name, FILTER_SANITIZE_STRING);
+	$email = $_POST['email'];
+	$email = filter_var($email, FILTER_SANITIZE_STRING);
+	$number = $_POST['number'];
+	$number = filter_var($number, FILTER_SANITIZE_STRING);
+	$message = $_POST['message'];
+	$message = filter_var($message, FILTER_SANITIZE_STRING);
+ 	
+
+	$insert_message = $conn->prepare("INSERT INTO `message` (id, user_id, name, email, number, message) VALUES (NULL,?,?,?,?,?)");
+	$insert_message->execute([$user_id, $name, $email, $number, $message]);*/
+
+ }
+ 
 
 ?>
 
@@ -42,21 +62,19 @@ if (!isset($user_id)) {
 			<div class="content">
 
 				<body>
-					<form class="contact" method="post" action="">
-						<h1>Contact Form</h1>
+					<form class="contact" method="POST" action="" enctype="multipart/form-data">
+						<h1>Questions? Send Us A Message!</h1>
 						<div class="fields">
 							<label for="email">
-								<i class="fas fa-envelope"></i>
 								<input id="email" type="email" name="email" placeholder="Your Email" required>
 							</label>
 							<label for="name">
-								<i class="fas fa-user"></i>
 								<input type="text" name="name" placeholder="Your Name" required>
 								<label>
-									<input type="text" name="subject" placeholder="Subject" required>
-									<textarea name="msg" placeholder="Message" required></textarea>
+									<textarea name="message" placeholder="Message" required></textarea>
 						</div>
-						<input type="submit">
+						<input type="submit" name = "message">
+						
 					</form>
 				</body>
 

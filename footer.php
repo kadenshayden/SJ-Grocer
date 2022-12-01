@@ -7,7 +7,7 @@
          <a href="home.php"> <i class="fas fa-angle-right"></i> home</a>
          <a href="shop.php"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="about.php"> <i class="fas fa-angle-right"></i> about</a>
-         <a href="contact.php"> <i class="fas fa-angle-right"></i> contact</a>
+         <a href="admin_page.php"> <i class="fas fa-angle-right"></i> control panel</a>
       </div>
 
       <div class="box">
